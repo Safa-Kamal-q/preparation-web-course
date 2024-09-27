@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+nav.main {
+    background-color: gray;
+    height: 60px;
+}
+
+div.main {
+    display: flex;
+    justify-content: space-around;
+}
+
+.left {
+    flex-basis: 65%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 100%
+}
+
+.left-nav{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.left-nav .items{
+    display: inline-flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.left-nav .arrow {
+    display: flex;
+    align-items: flex-end;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.left-nav .item {
+    background-color: gray;
+    padding: 5px;
+    width: 100px;
+}
+
+.left .main-img {
+    background-color: rgb(39, 38, 38);
+    height: 350px;
+}
+
+.left .items-list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 10px;
+    justify-content: space-between;
+}
+
+.left .items-list .item {
+    flex-basis: 18%;
+    display: inline-flex;
+    flex-direction: column;
+    box-sizing: border-box; 
+    height: 200px; 
+}
+
+.left .items-list .item img {
+    height: 150px;
+    width: 100%;
+    background-color: gray;
+    margin-bottom: 5px;
+}
+
+.left .items-list .item p {
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.right {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.right .up {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+
+.right-nav {
+    display: flex;
+    column-gap: 10px;
+    flex-direction: row-reverse;
+}
+
+
+.right-nav .item {
+    background-color: gray;
+    width: 30px;
+}
+
+.right .main-img {
+    background-color: rgb(39, 38, 38);
+    height: 350px;
+}
+
+.right .items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right .items-list h3 {
+    background-color: gray;
+    width: 100%;
+    height: 35px;
+    margin: 0px;
+
+}
+
+.right .items-list .items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.right .items-list .items hr {
+    height: 5px;
+    width: 100%;
+    background-color: gray;
+}
+
+.right .items-list .item {
+    display: flex;
+    gap: 10px;
+    align-items: center
+}
+
+.right .items-list .item img {
+    height: 120px;
+    width: 120px;
+    background-color: gray;
+    margin-right: 10px
+}
