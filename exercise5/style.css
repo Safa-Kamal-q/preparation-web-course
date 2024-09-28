@@ -140,15 +140,11 @@ div.main {
     background-color: gray;
 }
 
-.right .items-list .item {
-    display: flex;
-    gap: 10px;
-    align-items: center
-}
-
 .right .items-list .item img {
     height: 120px;
     width: 120px;
     background-color: gray;
-    margin-right: 10px
+    margin-right: 10px;
+    float: left;
 }
+
