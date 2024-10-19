@@ -1,20 +1,35 @@
 class Task {
-  constructor(name, description, dueDate) {
+  constructor(name, description, dueDate, isCompleted) {
     this.name = name;
     this.description = description;
     this.dueDate = dueDate;
-    this.completed = false;
+    this.completed = isCompleted;
   }
 }
 
-const tasks = [];
+let tasks = [];
+
+function saveTasksToLocalStorage() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+
+function loadTasksFromLocalStorage() {
+  const storedTasks = localStorage.getItem("tasks");
+  if (storedTasks) {
+    tasks = JSON.parse(storedTasks).map(
+      task => new Task(task.name, task.description, task.dueDate, task.completed)
+    );
+  }
+}
 
 function addTask() {
   const name = prompt("Enter the task name: ");
   const description = prompt("\nEnter task description: ");
   const dueDate = prompt("\nEnter due date (yyyy-mm-dd): ");
-  const newTask = new Task(name, description, dueDate);
+  const newTask = new Task(name, description, dueDate, false);
   tasks.push(newTask);
+  saveTasksToLocalStorage();
   console.log("The task added successfully");
 }
 
@@ -51,6 +66,9 @@ function markAsDone() {
     console.log("Invalid task number.");
   else {
     tasks[taskNumber - 1].completed = true;
+    showTasks(tasks);
+    saveTasksToLocalStorage();
+    console.log(localStorage.getItem("tasks"))
     console.log(`\nTask "${tasks[taskNumber - 1].name}" marked as done.`);
   }
 }
@@ -61,12 +79,14 @@ function deleteTask() {
     console.log(`\nTask number ${taskNumber} not found.`);
   else {
     tasks.splice(taskNumber - 1, 1);
+    saveTasksToLocalStorage();
     console.log("\nTask deleted successfully.");
   }
 }
 
 function clearAllTasks() {
   tasks.splice(0, tasks.length);
+  saveTasksToLocalStorage();
   console.log("All tasks deleted.");
 }
 
@@ -77,6 +97,7 @@ function changeDescription() {
   else {
     const newDescription = prompt("\nEnter the new description for the task: ");
     tasks[taskNumber - 1].description = newDescription;
+    saveTasksToLocalStorage();
     console.log(`\nDescription for task "${tasks[taskNumber - 1].name}" has been changed.`);
   }
 }
@@ -115,11 +136,12 @@ function showMenu(choice) {
   console.log('***************************');
 }
 
+loadTasksFromLocalStorage();
 showMenu();
 
-let isExit=false;
+let isExit = false;
 
-do{
+do {
   const choice = parseInt(prompt("What's your choice? "), 10);
   console.log("\nYou entered: " + choice);
   switch (choice) {
@@ -149,13 +171,12 @@ do{
       break;
     case 9:
       exitTaskManager();
-      isExit=true;
+      isExit = true;
       break;
     default:
       console.log('Invalid choice.');
-      showMenu();
       break;
   }
 
-}while(!isExit);
+} while (!isExit);
 
